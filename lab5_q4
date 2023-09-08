@@ -1,0 +1,56 @@
+
+import java.util.Scanner;
+
+
+class ComplexNumber {
+    private double real;
+    private double imaginary;
+
+    public ComplexNumber(double real, double imaginary) {
+        this.real = real;
+        this.imaginary = imaginary;
+    }
+
+    public void add(int integer, ComplexNumber complex) {
+        double resultReal = this.real + integer;
+        double resultImaginary = this.imaginary + complex.imaginary;
+
+        System.out.println("Sum of Complex and Integer:");
+        System.out.println(resultReal + " + " + resultImaginary + "i");
+    }
+
+    public void add(ComplexNumber complex1, ComplexNumber complex2) {
+        double resultReal = complex1.real + complex2.real;
+        double resultImaginary = complex1.imaginary + complex2.imaginary;
+
+        System.out.println("Sum of two Complex Numbers:");
+        System.out.println(resultReal + " + " + resultImaginary + "i");
+    }
+
+    
+}
+
+public class lab5_q4
+{
+    public static void main(String[] args) 
+    {
+        Scanner sc=new Scanner (System.in);
+        int a;
+        double re1,re2,c1,c2;
+        System.out.println("Enter the real and imaginary number of first complex:");
+        re1=sc.nextDouble();
+        c1=sc.nextDouble();
+        System.out.println("Enter the real and imaginary number of second complex:");
+        re2=sc.nextDouble();
+        c2=sc.nextDouble();
+        System.out.println("Enter an integer:");
+        a=sc.nextInt();
+        ComplexNumber complex1 = new ComplexNumber(re1, c1);
+        ComplexNumber complex2 = new ComplexNumber(re2, c2);
+
+        complex1.add(a, complex2);
+        complex1.add(complex1, complex2);
+    }
+}
+
+

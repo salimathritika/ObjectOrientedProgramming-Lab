@@ -1,0 +1,61 @@
+import java.util.Scanner;
+
+class Time
+{
+    int h,m,s;
+    Time()
+    {
+        this.h=this.m=this.s=0;
+    }
+
+    Time(int h,int m,int s)
+    {
+        this.h=h;
+        this.m=m;
+        this.s=s;
+    }
+    void display()
+    {
+        System.out.println("The time is "+this.h+":"+this.m+":"+this.s);
+    }
+
+    void add(Time obj)
+    {
+        int ah,am,as;
+        ah=this.h+obj.h;
+        if(ah>=24)
+           ah=ah-24;
+        am=this.m+obj.m;
+        if(am>=60)
+          am=am-60;
+        as=this.s+obj.s;
+        if(as>=60)
+           as=as-60;
+        System.out.println("The added time is "+ah+":"+am+":"+as);
+    }
+}
+
+public class lab5_q3 
+{
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner (System.in);
+        int h,m,s;
+        System.out.println("Enter the first time:");
+        h=sc.nextInt();
+        m=sc.nextInt();
+        s=sc.nextInt();
+        Time ob1=new Time(h,m,s);
+        System.out.println("Enter the second time:");
+        h=sc.nextInt();
+        m=sc.nextInt();
+        s=sc.nextInt();
+        Time ob2=new Time(h,m,s);
+        System.out.println("The first time:");
+        ob1.display();
+        System.out.println("The second time:");
+        ob2.display();
+        ob1.add(ob2);
+    }
+    
+}

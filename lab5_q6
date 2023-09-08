@@ -1,0 +1,50 @@
+import java.util.Scanner;
+
+class Book {
+    String title, author;
+    int edition;
+
+    Book(String title, String author, int edition) {
+        this.title = title;
+        this.author = author;
+        this.edition = edition;
+    }
+}
+
+public class lab5_q6 {
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        Book[] books = new Book[6];
+
+        for (int i = 0; i < 6; i++) {
+            System.out.println("Title:");
+            String title = sc.next();
+            System.out.println("Author:");
+            String author = sc.next();
+            System.out.println("Edition:");
+            int edition = sc.nextInt();
+            books[i] = new Book(title, author, edition);
+        }
+
+        System.out.println("Enter author name to be found:");
+        String key = sc.next();
+        find(books, key);
+    }
+
+    static void find(Book[] books, String author) {
+        boolean found = false;
+        for (Book book : books) {
+            if (book.author.equals(author)) 
+            {
+                System.out.println("Author: " + book.author);
+                System.out.println("Title of book: " + book.title);
+                System.out.println("Edition: " + book.edition);
+                found = true;
+            }
+        }
+        if (found==false) 
+        {
+            System.out.println("Not found");
+        }
+    }
+}

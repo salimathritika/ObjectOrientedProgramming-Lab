@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+class Employee
+{
+    Scanner sc=new Scanner(System.in);
+    String name,city;
+    double bs,da,hr,total;
+
+    void getdata()
+    {
+        System.out.println("Enter name,city,basic salary,%dearness allowance, %house rent");
+        this.name =sc.next();
+        this.city=sc.next();
+        this.bs=sc.nextDouble();
+        this.da=sc.nextDouble();
+        this.hr=sc.nextDouble();
+    }
+
+    void calculate()
+    {
+        this.total=(bs+bs*da/100+bs*hr/100);
+    }
+
+    void display()
+    {
+        System.out.println("Employee Details:");
+        System.out.println("Name:"+this.name+"\nCity:"+this.city+"\nTotal salary:"+this.total);
+    }
+
+
+}
+
+public class lab5_q2 
+{
+    public static void main (String args[])
+    {
+        Employee ob=new Employee();
+        ob.getdata();
+        ob.calculate();
+        ob.display();
+    }
+    
+}

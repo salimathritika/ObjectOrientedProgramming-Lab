@@ -21,16 +21,21 @@ class Time
 
     void add(Time obj)
     {
-        int ah,am,as;
-        ah=this.h+obj.h;
-        if(ah>=24)
-           ah=ah-24;
-        am=this.m+obj.m;
-        if(am>=60)
-          am=am-60;
-        as=this.s+obj.s;
+        int ah=0,am=0,as=0;
+        as+=this.s+obj.s;
         if(as>=60)
-           as=as-60;
+            {
+                as=as-60;
+                am=am+1;
+            } 
+        am+=this.m+obj.m;
+        if(am>=60)
+          {am=am-60;
+            ah=ah+1;
+          }
+        ah+=this.h+obj.h;
+        if(ah>=24)
+           ah=ah-24;        
         System.out.println("The added time is "+ah+":"+am+":"+as);
     }
 }

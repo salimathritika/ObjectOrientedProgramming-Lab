@@ -1,0 +1,132 @@
+import java.util.Scanner;
+
+class number
+{
+    private double a;
+
+    number(double a)
+    {
+        this.a=a;
+    }
+
+    boolean isZero()
+    {
+        if(this.a==0)
+          return true;
+        return false; 
+    }
+
+    boolean isPositive()
+    {
+        if(this.a>0)
+          return true;
+        return false; 
+    }
+    boolean isNegative()
+    {
+        if(this.a<0)
+          return true;
+        return false; 
+    }
+    boolean isOdd()
+    {
+        if((this.a%2)!=0)
+          return true;
+        return false; 
+    }
+    boolean isEven()
+    {
+        if((this.a%2)==0)
+          return true;
+        return false; 
+    }
+    boolean isPrime()
+    {
+        if(this.a>=2)
+        {
+            if(this.a==2)
+              return true;
+            for(int i=2;i<=this.a/2;i++)
+            {
+                if(this.a%i==0)
+                  {
+                    return false;
+                  }
+            }
+            return true;
+        }
+        return false;
+    }
+
+    boolean isArmstrong()
+    {
+        double num=this.a;
+        double arm=0,i;
+        while(num>0)
+        {
+            i=num%10;
+            arm+=(i*i*i);
+            num=num/10;
+        }
+        if(arm==this.a)
+           return true;
+        return false;
+
+    }
+    
+}
+
+
+public class lab5_q5 
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        int opt;
+        double x;
+        System.out.println("Enter a number:");
+        x=sc.nextDouble();
+        number ob=new number(x);
+        System.out.println("Check\n1.If zero\n2.If positive\n3.If negative\n4.If odd\n5.If even\n6.If prime\n7.If armstrong");
+        opt=sc.nextInt();
+        switch(opt)
+        {
+            case 1:
+            {
+                System.out.println(ob.isZero());
+                break;
+            }
+            case 2:
+            {
+                System.out.println(ob.isPositive());
+                break;
+            }
+            case 3:
+            {
+                System.out.println(ob.isNegative());
+                break;
+            }
+            case 4:
+            {
+                System.out.println(ob.isOdd());
+                break;
+            }
+            case 5:
+            {
+                System.out.println(ob.isEven());
+                break;
+            }
+            case 6:
+            {
+                System.out.println(ob.isPrime());
+                break;
+            }
+            case 7:
+            {
+                System.out.println(ob.isArmstrong());
+                break;
+            }
+        }
+    }
+    
+}

@@ -1,0 +1,48 @@
+import java.util.Scanner;
+
+class Student_Detail
+{
+    String name,clg;
+    int id;
+    Student_Detail(String name,int id,String clg)
+    {
+        this.name=name;
+        this.id=id;
+        this.clg=clg;
+    }
+    void display_details()
+    {
+        System.out.println("Name:"+name+"\nID:"+id+"\nCollege name:"+clg);
+    }
+}
+
+public class lab7_q1 
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        String name,clg;
+        int id,n;
+        System.out.println("Enter the number of students:");
+        n=sc.nextInt();
+        Student_Detail s[]=new Student_Detail[n];
+        System.out.println("Enter the following details:");
+        for(int i=0;i<n;i++)
+          {
+            System.out.println("Name:");
+            name=sc.next();
+            System.out.println("ID:");
+            id=sc.nextInt();
+            System.out.println("College Name:");
+            clg=sc.next();
+            s[i]=new Student_Detail(name,id,clg);
+          }
+          System.out.println("The details of each student is:");
+          for(int i=0;i<n;i++)
+            {
+              s[i].display_details();
+              System.out.println();
+            }
+    }
+    
+}

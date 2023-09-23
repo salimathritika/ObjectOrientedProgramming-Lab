@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+
+public class lab7_q3 
+{
+    public static void main(String args[])
+    {
+        Integer x = 5; // boxes int to an Integer object
+        x = x + 10; // unboxes the Integer to a int
+        System.out.println("Integer:"+x); 
+
+        Float m=1.5f;
+        m=m+3.7f;
+        System.out.println("Float:"+m);
+
+        Double d=2.7d;
+        d=d+3.7d;
+        System.out.println("Double:"+d);
+
+        Byte b=1;
+        b=(byte)(b+10);
+        System.out.println("Byte:"+b);
+
+        Long l=1l;
+        l=l+10;
+        System.out.println("Long:"+l);
+
+        Short s=10;
+        s=(short)(s+10);
+        System.out.println("Short:"+s);
+
+    }
+}

@@ -1,0 +1,26 @@
+//NOT COMPLETE
+import java.util.Scanner;
+
+interface sports
+{
+    void getNumberOfGoals(int a);
+    void dispTeam();
+    
+}
+
+class hockey implements sports
+{
+    int goals;
+    String team;
+
+    public void getNumberOfGoals(int a)
+    {
+
+    }
+}
+
+
+
+public class lab8_add3 {
+    
+}

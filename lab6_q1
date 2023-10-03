@@ -1,0 +1,175 @@
+import java.util.Scanner;
+
+class Account {
+    String customerName;
+    long accountNumber;
+    double balance;
+
+    public Account(String customerName, long accountNumber, double initialBalance) {
+        this.customerName = customerName;
+        this.accountNumber = accountNumber;
+        this.balance = initialBalance;
+    }
+
+    public void deposit(double amount) {
+        balance += amount;
+        System.out.println("Deposit of Rs." + amount + " successful.");
+    }
+
+    public void displayBalance() {
+        System.out.println("Account Balance: Rs." + balance);
+    }
+
+    public void withdraw(double amount) {
+        if (balance >= amount) {
+            balance -= amount;
+            System.out.println("Withdrawal of Rs." + amount + " successful.");
+        } else {
+            System.out.println("Insufficient balance for withdrawal.");
+        }
+    }
+}
+
+class CurrentAccount extends Account {
+    public CurrentAccount(String customerName, long accountNumber, double initialBalance) {
+        super(customerName, accountNumber, initialBalance);
+    }
+
+    public void computeInterest() {
+        // Current account does not earn interest
+        System.out.println("No interest earned on Current Account.");
+    }
+}
+
+class SavingsBankAccount extends Account {
+    double interestRate;
+    double minBalance;
+
+    public SavingsBankAccount(String customerName, long accountNumber, double initialBalance, double interestRate, double minBalance) {
+        super(customerName, accountNumber, initialBalance);
+        this.interestRate = interestRate;
+        this.minBalance = minBalance;
+    }
+
+    public void computeInterest() {
+        double interest = balance * (interestRate / 100);
+        balance += interest;
+        System.out.println("Interest of Rs." + interest + " credited to Savings Account.");
+    }
+
+    public void checkMinimumBalance() {
+        if (balance < minBalance) {
+            double penalty = minBalance - balance;
+            balance -= penalty;
+            System.out.println("Minimum balance not maintained. Penalty of Rs." + penalty + " imposed.");
+        }
+    }
+}
+
+public class lab6_q1 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String customerName;
+        long accountNumber;
+        double initialBalance,interestRate,minBalance,amt;
+        int opt;
+        char acc;
+
+        System.out.println("Enter the name,account number and initial balance for current savings account:");
+        customerName=sc.next();
+        accountNumber=sc.nextLong();
+        initialBalance=sc.nextDouble();
+
+        CurrentAccount c = new CurrentAccount(customerName, accountNumber, initialBalance);
+
+        System.out.println("Enter the name,account number, initial balance, interest rate and minimum balance for savings savings account:");
+        customerName=sc.next();
+        accountNumber=sc.nextLong();
+        initialBalance=sc.nextDouble();
+        interestRate=sc.nextDouble();
+        minBalance=sc.nextDouble();
+        SavingsBankAccount s = new SavingsBankAccount(customerName, accountNumber, initialBalance, interestRate, minBalance);
+
+        do
+        {
+            System.out.println("Enter the account type(c for current, s for savings) or e to exit:");
+            acc=sc.next().charAt(0);
+            switch(acc)
+            {
+                case 'c':
+                {
+                    System.out.println("1.To deposit money\n2.To withdraw money\n3.To compute the interest\n4.To display balance");
+                    opt=sc.nextInt();
+                    switch(opt)
+                    {
+                        case 1:
+                        {
+                            System.out.println("Enter the amount to deposit:");
+                            amt=sc.nextDouble();
+                            c.deposit(amt);
+                            break;
+                        }
+                        case 2:
+                        {
+                            System.out.println("Enter the amount to be withdraw:");
+                            amt=sc.nextDouble();
+                            c.withdraw(amt);
+                            break;
+                        }
+                        case 3:
+                        {
+                            c.computeInterest();
+                            break;
+                        }
+                        case 4:
+                        {
+                            c.displayBalance();
+                            break;
+                        }
+                    }
+                    break;
+                }
+                case 's':
+                {
+                    System.out.println("1.To deposit money\n2.To compute interest\n3.To check minimum balance\n4.To withdraw \n5.To display account balance");
+                    opt=sc.nextInt();
+                    switch(opt)
+                    {
+                        case 1:
+                        {
+                            System.out.println("Enter the amount to deposit:");
+                            amt=sc.nextDouble();
+                            s.deposit(amt);
+                            break;
+                        }
+                        case 2:
+                        {
+                            s.computeInterest();
+                            break;
+                        }
+                        case 3:
+                        {
+                            s.checkMinimumBalance();
+                            break;
+                        }
+                        case 4:
+                        {
+                            System.out.println("Enter the amount to be withdraw:");
+                            amt=sc.nextDouble();
+                            s.withdraw(amt);
+                            break;
+                        }
+                        case 5:
+                        {
+                            s.displayBalance();
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
+
+
+        }while(acc!='e');
+    }
+}

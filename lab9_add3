@@ -1,0 +1,19 @@
+import java.util.Scanner;
+
+public class lab9_add3 
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        String s1,s2,s3,s4,s5;
+        System.out.println("Enter 5 strings:");
+        s1=sc.next();
+        s2=sc.next();
+        s3=sc.next();
+        s4=sc.next();
+        s5=sc.next();
+        s1=s1+s2+s3+s4+s5;
+        System.out.println("The concatenated string is:"+s1);
+    }
+    
+}

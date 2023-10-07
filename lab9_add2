@@ -1,0 +1,54 @@
+//Showing some error
+
+import java.util.Scanner;
+
+class Student
+{
+    int regno;
+    String fname,lname,degree;
+    Student(String fname,String lname,int regno,String degree)
+    {
+        this.fname=fname;
+        this.lname=lname;
+        this.degree=degree;
+        this.regno=regno;
+    }
+    void display()
+    {
+        System.out.println("Name:"+fname+" "+lname+"\nRegistration number:"+regno+"\nDegree:"+degree);
+    }
+}
+
+
+public class lab9_add2 
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        Student s[]=new Student[10];
+        int i=0,regno;
+        String lname,fname,deg,key;
+        for(i=0;i<3;i++)
+        {
+            System.out.println("Enter first name,last name,degree and registration number");
+            fname=sc.next();
+            lname=sc.next();
+            deg=sc.next();
+            regno=sc.nextInt();
+            s[i]=new Student(fname,lname,regno,deg);
+        }
+        System.out.println("Enter the name to be searched:");
+        key=sc.next();
+        for(i=0;i<3;i++)
+        {
+            if(key.equalsIgnoreCase(s[i].fname)==true || key.equalsIgnoreCase(s[i].lname)==true)
+            {
+                System.out.println("Student found");
+                s[i].display();
+                break;
+            }
+        }
+
+    }
+    
+}

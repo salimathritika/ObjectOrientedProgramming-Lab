@@ -1,0 +1,42 @@
+//WORKING
+
+import java.util.Scanner;
+
+public class lab9_add1 
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        String str[]=new String[10];
+        String temp,s;
+        int n,i,j;
+        System.out.println("Enter the number of strings:");
+        n=sc.nextInt();
+        System.out.println("Enter the strings:");
+        for(i=0;i<n;i++)
+        {
+            str[i]=sc.next();
+        }
+
+        // System.out.println("The strings are:");
+        // for(i=0;i<n;i++)
+        // System.out.print(str[i]+" ");
+        for(i=0;i<n-1;i++)
+           {
+               for(j=0;j<n-1-i;j++)
+            {
+                if((str[j].compareTo(str[j+1]))>0)
+                {
+                    temp=str[j];
+                    str[j]=str[j+1];
+                    str[j+1]=temp;
+                }
+            }
+        }
+
+        System.out.println("The strings in alphabetical order are:");
+        for(i=0;i<n;i++)
+        System.out.print(str[i]+" ");
+    }
+    
+}

@@ -1,29 +1,35 @@
-//NEED TO EDIT CODE
+/*Create a base class for student having registration number, name and age. From this 
+class create two new class UG and PG student with semester and fees as its data 
+members. Use proper member function for demonstrating inheritance. Display the 
+details of students who took admission to UG course and PG course separately, total 
+number of UG admissions and PG admissions. */
+
+import java.util.Scanner;
 
 class Student {
-    private int registrationNumber;
-    private String name;
-    private int age;
+    int regno;
+    String name;
+    int age;
 
-    public Student(int registrationNumber, String name, int age) {
-        this.registrationNumber = registrationNumber;
+    public Student(int regno, String name, int age) {
+        this.regno = regno;
         this.name = name;
         this.age = age;
     }
 
     public void displayDetails() {
-        System.out.println("Registration Number: " + registrationNumber);
+        System.out.println("Registration Number: " + regno);
         System.out.println("Name: " + name);
         System.out.println("Age: " + age);
     }
 }
 
 class UGStudent extends Student {
-    private int semester;
-    private double fees;
+    int semester;
+    double fees;
 
-    public UGStudent(int registrationNumber, String name, int age, int semester, double fees) {
-        super(registrationNumber, name, age);
+    public UGStudent(int regno, String name, int age, int semester, double fees) {
+        super(regno, name, age);
         this.semester = semester;
         this.fees = fees;
     }
@@ -37,8 +43,8 @@ class UGStudent extends Student {
 }
 
 class PGStudent extends Student {
-    private int semester;
-    private double fees;
+    int semester;
+    double fees;
 
     public PGStudent(int registrationNumber, String name, int age, int semester, double fees) {
         super(registrationNumber, name, age);
@@ -56,32 +62,60 @@ class PGStudent extends Student {
 
 public class lab6_q2 {
     public static void main(String[] args) {
-        // Create UG students
-        UGStudent ug1 = new UGStudent(1001, "John Doe", 20, 2, 5000.0);
-        UGStudent ug2 = new UGStudent(1002, "Jane Smith", 21, 3, 5500.0);
+        
 
-        // Create PG students
-        PGStudent pg1 = new PGStudent(2001, "Alice Johnson", 24, 1, 8000.0);
-        PGStudent pg2 = new PGStudent(2002, "Bob Wilson", 25, 2, 7500.0);
+        int ug_total=0,pg_total=0,regno,age,semester;
+        String name; 
+        double fees;
+        char c;
+        UGStudent u[]=new UGStudent[500];
+        PGStudent p[]=new PGStudent[500];
+        Scanner sc=new Scanner(System.in);
+        do
+        {
+            System.out.println("Enter u for UG admission or p for PG admission and e to exit");
+            c=sc.next().charAt(0);
+            switch(c)
+            {
+                case 'u':
+                {
+                    System.out.println("Enter name,regno,age,semester and fees:");
+                    name=sc.next();
+                    regno=sc.nextInt();
+                    age=sc.nextInt();
+                    semester=sc.nextInt();
+                    fees=sc.nextDouble();
+                    u[ug_total]=new UGStudent(regno, name, age, semester, fees);
+                    ug_total++;
+                    break;
+                }
+                case 'p':
+                {
+                    System.out.println("Enter name,regno,age,semester and fees:");
+                    name=sc.next();
+                    regno=sc.nextInt();
+                    age=sc.nextInt();
+                    semester=sc.nextInt();
+                    fees=sc.nextDouble();
+                    p[pg_total]=new PGStudent(regno, name, age, semester, fees);
+                    pg_total++;
+                    break;
+                }
+                case 'e':System.out.println("Exiting");
+            }
+        }while(c!='e');
 
-        // Display UG student details
-        System.out.println("UG Admissions:");
-        ug1.displayUGDetails();
-        System.out.println();
-        ug2.displayUGDetails();
-        System.out.println();
-
-        // Display PG student details
-        System.out.println("PG Admissions:");
-        pg1.displayPGDetails();
-        System.out.println();
-        pg2.displayPGDetails();
-        System.out.println();
-
-        // Calculate total admissions
-        int totalUGAdmissions = 2; // Two UG admissions
-        int totalPGAdmissions = 2; // Two PG admissions
-        System.out.println("Total UG Admissions: " + totalUGAdmissions);
-        System.out.println("Total PG Admissions: " + totalPGAdmissions);
+        System.out.println("Details of UG students:");
+        for(int i=0;i<ug_total;i++)
+        {
+            u[i].displayUGDetails();
+        }
+        System.out.println("Details of PG students:");
+        for(int i=0;i<pg_total;i++)
+        {
+            p[i].displayPGDetails();
+        }
+        System.out.println("The number of UG students are "+ug_total);
+        System.out.println("The number of PG students are "+pg_total);     
     }
 }

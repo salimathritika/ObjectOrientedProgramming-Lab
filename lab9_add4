@@ -1,0 +1,20 @@
+//WORKS
+import java.util.Scanner;
+
+public class lab9_add4 
+{
+    public static void main(String args[])
+    {
+        Scanner sc= new Scanner(System.in);
+        String ph="",addr="",tele;
+        int i;
+        System.out.println("Enter the telephone number:");
+        tele=sc.next();
+        for(i=1;i<=3;i++)
+        addr=addr+tele.charAt(i);
+        for(i=5;i<=12;i++)
+        ph=ph+tele.charAt(i);
+        System.out.println("Telephone number:"+tele+"\nArea code:"+addr+"\nPhone number:"+ph);
+    }
+    
+}

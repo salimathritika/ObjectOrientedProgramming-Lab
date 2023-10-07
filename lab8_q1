@@ -1,0 +1,93 @@
+import java.util.Scanner;
+
+interface sales
+{
+    void display();
+}
+
+class hardware implements sales
+{
+    String category,manu;
+    static int ch=0;
+    hardware(String category,String manu)
+    {
+        this.category=category;
+        this.manu=manu;
+        ch++;
+    }
+    public void display()
+    {
+        System.out.println("The total number of sales for hardware items in the last three months:"+ch);
+    }
+    void display_details()
+    {
+        System.out.println("Category:"+this.category+"\nOriginal manufacturer:"+this.manu);
+    }
+}
+
+class software implements sales
+{
+    String type,os;
+    static int cs=0;
+    software(String type,String os)
+    {
+        this.type=type;
+        this.os=os;
+        cs++;
+    }
+    public void display()
+    {
+        System.out.println("The total number of sales for software items in the last three months:"+cs);
+    }
+    void display_details()
+    {
+        System.out.println("Type of software:"+this.type+"\nOperating system:"+this.os);
+    }
+}
+
+public class lab8_q1 
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        char c;
+        String m,n;
+        hardware h[]=new hardware[100];
+        software s[]=new software[100];
+        int ch=0,cs=0;
+        do
+          {
+              System.out.println("Enter h for hardware, s for software and e to exit");
+              c=sc.next().charAt(0);
+              switch(c)
+              {
+                  case 'h':
+                  {
+                      System.out.println("Enter category");
+                      m=sc.next();
+                      System.out.println("Enter the Original manufacturer:");
+                      n=sc.next();
+                      h[ch]=new hardware(m,n);
+                      ch++;
+                      break;
+                  }
+                  case 's':
+                  {
+                      System.out.println("Enter type of software");
+                      m=sc.next();
+                      System.out.println("Enter the operating system:");
+                      n=sc.next();
+                      s[cs]=new software(m,n);
+                      cs++;
+                      break;
+                  }
+                  case 'e':
+                  System.out.println("Exiting");
+              }
+          }while(c!='e');
+          h[0].display();
+          s[0].display();
+
+    }
+    
+}

@@ -1,0 +1,86 @@
+//NOT WORKING THE SECOND PART
+
+import java.util.Scanner;
+
+public class lab9_q3 
+{
+    static String reverse(String st)
+    {
+        int i=0;
+        int n=st.length();
+        String rev="";
+        for(i=n-1;i>=0;i--)
+        {
+            rev=rev+st.charAt(i);
+        }
+        return rev;
+    }
+    static String order(String st) //not working
+    {
+        int i,j,n;
+        n=st.length();
+        char temp,a,b;
+        for(i=0;i<n-1;i++)
+        {
+            for(j=0;j<n-1-i;j++)
+            {
+                if(st.charAt(j)>st.charAt(j+1))
+                  {
+                      temp=st.charAt(j);
+                      a=st.charAt(j);
+                      b=st.charAt(j+1);
+                      temp=a;
+                      a=b;
+                      b=temp;
+                      st.replace(st.charAt(j),b);
+                      st.replace(st.charAt(j+1),a);
+
+                     // st.replace(temp, st.charAt(j));
+                      //st.replace(st.charAt(j),st.charAt(j+1));
+                      //st.replace(st.charAt(j+1),temp);
+                  }
+            }
+        }
+        return st;
+    }
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        String str,rev="",neww="";
+        int i,opt;
+        System.out.println("Enter a string:");
+        str=sc.next();
+        System.out.println("1.To see if string is palindrome\n2.To display string in alphabetical order\n3.To reverse the string\n4.To concatenate reversed and original string");
+        opt=sc.nextInt();
+        switch(opt)
+        {
+            case 1:
+            {
+                rev=reverse(str);
+                if(str.equals(rev)==true)
+                  System.out.println(str+" is a palindrome");
+                else
+                   System.out.println(str+" is not a palindrome");
+                break;
+            }
+            case 2:
+            {
+                System.out.println("The string in alphabetical order is:"+order(str));
+                break;
+            }
+            case 3:
+            {
+                System.out.println("The reverse of "+str+" is:"+reverse(str));
+                break;
+            }
+            case 4:
+            {
+                neww=str+reverse(str);
+                System.out.println("The concatenated string is:"+neww);
+                break;
+            }
+
+        }
+    }
+    
+}

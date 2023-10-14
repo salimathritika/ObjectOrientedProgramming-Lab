@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 interface sports
 {
-    void getNumberOfGoals(int a);
+    void getNumberOfGoals(String team,int a);
     void dispTeam();
     
 }
@@ -13,14 +13,76 @@ class hockey implements sports
     int goals;
     String team;
 
-    public void getNumberOfGoals(int a)
+    public void getNumberOfGoals(String team,int a)
     {
+        goals=a;
+        this.team=team;
+    }
+    public void dispTeam()
+    {
+        System.out.println("The winning team in hockey is:"+this.team);
+    }
+}
 
+class football implements sports
+{
+    int goals;
+    String team;
+
+    public void getNumberOfGoals(String team,int a)
+    {
+        goals=a;
+        this.team=team;
+    }
+    public void dispTeam()
+    {
+        System.out.println("The winning team in foot ball is:"+this.team);
     }
 }
 
 
 
-public class lab8_add3 {
+public class lab8_add3 
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        String team;
+        int g,i;
+        football f[]=new football[2];
+        hockey h[]=new hockey[2];
+        System.out.println("Enter details for two football teams:");
+        for(i=0;i<2;i++)
+        {
+            System.out.println("Team name:");
+            team=sc.next();
+            System.out.println("Number of goals:");
+            g=sc.nextInt();
+            f[i]=new football();
+            f[i].getNumberOfGoals(team, g);
+        }
+        System.out.println("Enter details for two hockey teams:");
+        for(i=0;i<2;i++)
+        {
+            System.out.println("Team name:");
+            team=sc.next();
+            System.out.println("Number of goals:");
+            g=sc.nextInt();
+            h[i]=new hockey();
+            h[i].getNumberOfGoals(team, g);
+        }
+        if(f[0].goals>f[1].goals)
+        {
+            f[0].dispTeam();
+        }
+        else
+           f[1].dispTeam();
+        if(h[0].goals>h[1].goals)
+        {
+            h[0].dispTeam();
+        }
+        else
+           h[1].dispTeam();
+    }
     
 }

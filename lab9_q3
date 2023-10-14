@@ -1,5 +1,3 @@
-//NOT WORKING THE SECOND PART
-
 import java.util.Scanner;
 
 public class lab9_q3 
@@ -19,28 +17,26 @@ public class lab9_q3
     {
         int i,j,n;
         n=st.length();
-        char temp,a,b;
+        char temp;
+        char a[]=new char[n];
+        a=st.toCharArray();
         for(i=0;i<n-1;i++)
         {
-            for(j=0;j<n-1-i;j++)
+            for(j=i+1;j<n;j++)
             {
-                if(st.charAt(j)>st.charAt(j+1))
+                if(st.charAt(i)>st.charAt(i))
                   {
-                      temp=st.charAt(j);
-                      a=st.charAt(j);
-                      b=st.charAt(j+1);
-                      temp=a;
-                      a=b;
-                      b=temp;
-                      st.replace(st.charAt(j),b);
-                      st.replace(st.charAt(j+1),a);
-
-                     // st.replace(temp, st.charAt(j));
-                      //st.replace(st.charAt(j),st.charAt(j+1));
-                      //st.replace(st.charAt(j+1),temp);
+                      
+                      if(a[i]>a[j]) 
+                      {
+                        temp = a[i];
+                        a[i] = a[j];
+                        a[j] = temp;
+                     }
                   }
             }
         }
+        st=a.toString();
         return st;
     }
     public static void main(String args[])

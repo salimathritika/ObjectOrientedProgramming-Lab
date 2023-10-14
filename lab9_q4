@@ -1,0 +1,68 @@
+/*4. Write a menu driven program to do the following:-
+a. To compare two strings
+b. To convert the uppercase character to lower and vice-versa
+c. To display whether an entered string is a substring of the other or not
+d. If the entered string is a substring of the other, replace it with “Hello”*/
+
+import java.util.Scanner;
+
+import javax.lang.model.util.ElementScanner14;
+
+public class lab9_q4 
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        String str1,str2;
+        int opt;
+        System.out.println("1.To compare two strings\n2.To convert the case\n3.To display whether a string is the substring of another string, if yes replace with hello");
+        opt=sc.nextInt();
+        switch(opt)
+        {
+            case 1:  //WORKS
+            {
+                System.out.println("Enter the two strings:");
+                str1=sc.next();
+                str2=sc.next();
+                if(str1.compareToIgnoreCase(str2)<0)
+                  System.out.println(str1+" is smaller than "+str2);
+                else if(str1.compareToIgnoreCase(str2)>0)
+                System.out.println(str1+" is bigger than "+str2);
+                else 
+                   System.out.println(str1+" is equal to "+str2);
+                break;
+            }
+            case 2:   //WORKS
+            {
+                System.out.println("Enter a string:");
+                str1=sc.next();
+	           String s1 = "";
+	           for (int i = 0; i < str1.length(); i++) {
+	            	if(Character.isUpperCase(str1.charAt(i))) 
+	      	        	 s1=s1+Character.toLowerCase(str1.charAt(i));
+	            	else 
+			          s1=s1+Character.toUpperCase(str1.charAt(i));
+	           }
+	        System.out.println("Toggle String is : "+s1);
+	 
+                break;
+            }
+            case 3:  //WORKS
+            {
+                System.out.println("Enter the main string:");
+                str1=sc.next();
+                System.out.println("Enter substring");
+                str2=sc.next();
+                if(str1.contains(str2)==true)
+                {
+                    System.out.println("The string contains the substring");
+                    System.out.println("New string is "+str1.replace(str2, "hello"));
+                }
+                else 
+                  System.out.println("String does not contain the substring");
+                break;
+            }
+        }
+    }
+    
+}

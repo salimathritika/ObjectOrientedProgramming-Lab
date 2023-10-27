@@ -1,0 +1,46 @@
+/*4. Write a program to find the exception marks out of bounds. In this program create
+a class called Student. If the mark is greater than 100 it must create an exception
+called MarkOutofBoundsException and throw it. */
+
+import java.util.Scanner;
+
+class MarkOutOfBounds extends Exception
+{
+    int a;
+    MarkOutOfBounds(int a)
+    {
+        this.a=a;
+    }
+    public String toString()
+    {
+        return ("Marks out of bounds exception: Mark entered is "+a);
+    }
+}
+
+public class lab10_add4 
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        int i,sum=0;
+        int m[]=new int[3];
+        System.out.println("Enter the marks of the student in three subjects:");
+        try
+        {
+            for(i=0;i<3;i++)
+            {
+                m[i]=sc.nextInt();
+                if(m[i]>100)
+                  throw new MarkOutOfBounds(m[i]);
+                sum+=m[i];
+            }
+        }
+        catch(MarkOutOfBounds e)
+        {
+            System.out.println(e);
+        }
+
+        System.out.println("Total marks="+sum);
+    }
+    
+}

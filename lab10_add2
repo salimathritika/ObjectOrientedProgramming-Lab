@@ -1,0 +1,46 @@
+/*2. Write a program to throw the NegativeArraySizeException, when the size of an
+array is negative. */
+
+import java.util.Scanner;
+
+class NegativeArraySizeException extends Exception
+{
+    int a;
+    NegativeArraySizeException(int a)
+    {
+        this.a=a;
+    }
+    public String toString()
+    {
+        return("NegativeArraySizeException. Negative size of "+a+" was encountered");
+    }
+}
+
+public class lab10_add2 
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        int len,i,sum=0;
+        System.out.println("Enter the size of the array");
+        try
+        {
+            len=sc.nextInt();
+            if(len<0)
+              throw new NegativeArraySizeException(len);
+            int a[]=new int[len];
+            System.out.println("Enter the elements of the array:");
+            for(i=0;i<len;i++)
+            {
+                a[i]=sc.nextInt();
+                sum+=a[i];
+            }
+            System.out.println("The sum="+sum);
+        }
+
+        catch(NegativeArraySizeException e)
+        {
+            System.out.println(e);
+        }
+    }    
+}

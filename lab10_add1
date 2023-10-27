@@ -1,0 +1,49 @@
+/*1. Design a class Input_Exception for validating an input taken from the user during
+runtime and continue to perform the sum of the numbers entered until a -1 is input.
+In case the user enters a -1, the sum is calculated and displayed. In case the user
+enters any floating point numbers, then the method that takes the input should
+raise the user defined exception and the same should be handled in the main. */
+
+import java.util.Scanner;
+
+class isFloatException extends Exception
+{
+    float f;
+    isFloatException(float f)
+    {
+        this.f=f;
+    }
+    public String toString()
+    {
+        return ("isFloatException. The number entered is of float type:"+f);
+    }
+}
+
+public class lab10_add1 
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        float x;
+        int sum=0;
+        System.out.println("Enter the numbers. enter -1 to exit");
+        try
+        {
+            do
+            {
+                x=sc.nextFloat();
+                if(x!=-1)
+                { if(x!=Math.ceil(x))
+                    throw new isFloatException(x);
+                 sum+=(int)x;
+                }
+            }while(x!=-1);
+        }
+
+        catch(isFloatException e)
+        {
+            System.out.println(e);
+        }
+        System.out.println("Sum="+sum);
+    }
+}

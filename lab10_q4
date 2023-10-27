@@ -1,0 +1,46 @@
+/*4. Create a user defined exception class which displays error message. */
+
+import java.util.Scanner;
+
+class MyException extends Exception
+{
+    int a;
+    MyException(int b) 
+    {
+      a=b;
+    }
+    public String toString(){
+      return ("Exception Number =  "+a) ;
+   }
+}
+
+public class lab10_q4 
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        int x,sum=0;
+        System.out.println("Enter numbers to get the sum of them. Do not enter the number 0. to exit enter -1");
+        try
+        {
+            do
+            {
+            x=sc.nextInt();
+            if(x==0)
+              throw new MyException(x);
+            if(x!=-1)
+            sum+=x;
+            }while(x!=-1);
+
+        }
+
+        catch(MyException e)
+        {
+            System.out.println(e);
+        }
+        System.out.println("The sum is:"+sum);
+        
+    }
+    
+}
+

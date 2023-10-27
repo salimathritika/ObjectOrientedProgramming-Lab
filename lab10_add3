@@ -1,0 +1,40 @@
+/*3. Write a program to raise EvenNumberException if the number is even. */
+
+import java.util.Scanner;
+
+class EvenNumberException extends Exception
+{
+    int a;
+    EvenNumberException(int a)
+    {
+        this.a=a;
+    }
+    public String toString()
+    {
+        return("EvenNumberException. An even number "+a+" was entered");
+    }
+}
+
+public class lab10_add3 
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        int a;
+        System.out.println("Enter numbers");
+        try
+        {
+            while(true)
+            {
+                a=sc.nextInt();
+                if(a%2==0)
+                  throw new EvenNumberException(a);
+            }
+        }
+
+        catch(EvenNumberException e)
+        {
+            System.out.println(e);
+        }
+    }
+}

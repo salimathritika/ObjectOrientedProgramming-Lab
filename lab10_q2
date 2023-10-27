@@ -1,0 +1,21 @@
+/*2. Write a program that handles ArrayOverflowException. [ Hint: Consider the array
+size] */
+
+import java.util.Scanner;
+
+public class lab10_q2 
+{
+    public static void main(String args[])
+    {
+        int a[]={0,1,2,3,4};
+        try
+        {
+            System.out.println(a[6]);
+        }
+        catch(ArrayIndexOutOfBoundsException e)
+        {
+            System.out.println("Error caught:"+e);
+        }
+    }
+    
+}

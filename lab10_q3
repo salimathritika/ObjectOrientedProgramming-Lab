@@ -1,0 +1,49 @@
+/*3. Write a program to enter student’s Name, Roll Number and Marks in three
+subjects and find the percentage, grade and handle NumberFormatException. */
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class lab10_q3 
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        int roll,i;
+        String marks[]=new String[3];
+        String name;
+        System.out.println("Enter name,roll number and marks in three subjects");
+        name=sc.next();
+        roll=sc.nextInt();
+        for(i=0;i<3;i++)
+           marks[i]=sc.next();
+        int m[]=new int[3];
+        try
+        {
+            for(i=0;i<3;i++)
+               m[i]=Integer.valueOf(marks[i]);
+            double p;
+            char g;
+            p=(m[0]+m[1]+m[2])/3;
+            if(p>90)
+              g='A';
+            else if(p<=90 & p>=80)
+               g='B';
+            else if(p<80 & p>=70)
+               g='C';
+            else if(p<70 & p>=60)
+               g='D';
+            else if(p<60 & p>=50)
+               g='E';
+            else
+               g='F';
+            System.out.println("Percentage="+p+"\nGrade="+g);
+        }
+        catch(NumberFormatException e)
+        {
+            System.out.println("Error caught:"+e);
+        }
+        
+    }
+    
+}

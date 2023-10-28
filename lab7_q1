@@ -2,13 +2,13 @@ import java.util.Scanner;
 
 class Student_Detail
 {
-    String name,clg;
+    static String clg="MIT";
+    String name;
     int id;
-    Student_Detail(String name,int id,String clg)
+    Student_Detail(String name,int id)
     {
         this.name=name;
         this.id=id;
-        this.clg=clg;
     }
     void display_details()
     {
@@ -21,7 +21,7 @@ public class lab7_q1
     public static void main(String args[])
     {
         Scanner sc=new Scanner(System.in);
-        String name,clg;
+        String name;
         int id,n;
         System.out.println("Enter the number of students:");
         n=sc.nextInt();
@@ -33,9 +33,7 @@ public class lab7_q1
             name=sc.next();
             System.out.println("ID:");
             id=sc.nextInt();
-            System.out.println("College Name:");
-            clg=sc.next();
-            s[i]=new Student_Detail(name,id,clg);
+            s[i]=new Student_Detail(name,id);
           }
           System.out.println("The details of each student is:");
           for(int i=0;i<n;i++)

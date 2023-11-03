@@ -1,0 +1,94 @@
+
+
+import java.util.Scanner;
+
+class bank
+{
+    int pa,t;
+    void getRateOfInterest()
+    {
+        System.out.println("The different banks are:ICICI(7%),SBI(8%),AXIS(9%)");
+    }
+}
+
+class ICICI extends bank
+{
+    int pa,t;
+    ICICI(int pa,int t)
+    {
+        this.pa=pa;
+        this.t=t;
+    }
+    void getRateOfInterest()
+    {
+        System.out.println("Rate of interest is 7%");
+        System.out.println("Interest="+((pa*t*7)/100));
+    }
+}
+
+class SBI extends bank
+{
+    int pa,t;
+    SBI(int pa,int t)
+    {
+        this.pa=pa;
+        this.t=t;
+    }
+    void getRateOfInterest()
+    {
+        System.out.println("Rate of interest is 8%");
+        System.out.println("Interest="+((pa*t*8)/100));
+    }
+}
+
+class AXIS extends bank
+{
+    int pa,t;
+    AXIS(int pa,int t)
+    {
+        this.pa=pa;
+        this.t=t;
+    }
+    void getRateOfInterest()
+    {
+        System.out.println("Rate of interest is 9%");
+        System.out.println("Interest="+((pa*t*9)/100));
+    }
+}
+
+public class lab6_q3
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        int opt,pa,t;
+        bank ob;
+        System.out.println("Enter principal amount and time period");
+        pa=sc.nextInt();
+        t=sc.nextInt();
+        System.out.println("Enter:\n1.For ICICI\n2.For SBI\n3.For AXIS");
+        opt=sc.nextInt();
+        switch(opt)
+        {
+            case 1:
+            {
+                ob=new ICICI(pa,t);
+                ob.getRateOfInterest();
+                break;
+            }
+            case 2:
+            {
+                ob=new SBI(pa,t);
+                ob.getRateOfInterest();
+                break;
+            }
+            case 3:
+            {
+                ob=new AXIS(pa,t);
+                ob.getRateOfInterest();
+                break;
+            }
+            default:System.out.println("Invalid entry");
+        }
+    }
+}

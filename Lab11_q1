@@ -1,0 +1,55 @@
+import java.util.Scanner;
+
+class Thread_interface implements Runnable
+{
+    String name;
+    Thread t;
+    Thread_interface(String name)
+    {
+        t=new Thread(name);
+        this.name=name;
+        run();
+    }
+    public void run()
+    {
+        System.out.println("This is a thread implementing the runnable interface");
+    }
+}
+
+class Thread_class extends Thread
+{
+    String name;
+    Thread_class(String name)
+    {
+        super(name);
+        this.name=name;
+        start();
+    }
+    public void run()
+    {
+        System.out.println("This is a thread extending the Thread class");
+    }
+}
+
+public class lab11_q1
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("1.To implement runnable interface\n2.To extend Thread class\n");
+        int opt=sc.nextInt();
+        switch(opt)
+        {
+            case 1:
+            {
+                Thread_interface t1=new Thread_interface("t1");
+                break;
+            }
+            case 2:
+            {
+                Thread_class t2=new Thread_class("t2");
+                break;
+            }
+        }
+    }
+}

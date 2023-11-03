@@ -1,0 +1,31 @@
+//WORKS BUT PREFERABLY CHANGE
+
+public class lab11_q4 extends Thread
+{
+      public void run()
+      {
+            String threadName = Thread.currentThread().getName();
+            Integer threadPrio = Thread.currentThread().getPriority();
+            System.out.println(threadName + " has priority " + threadPrio);
+      }
+      public static void main(String[] args) throws InterruptedException
+      {
+            lab11_q4 t1 = new lab11_q4();
+            lab11_q4 t2 = new lab11_q4();
+            lab11_q4 t3 = new lab11_q4();
+
+            t1.setPriority(Thread.MAX_PRIORITY);
+            t2.setPriority(Thread.MIN_PRIORITY);
+            t3.setPriority(Thread.NORM_PRIORITY);
+  
+            t1.start();
+            t2.start();
+            t3.start();
+      }
+}
+
+/*OUTPUT
+ * Thread-0 has priority 10
+Thread-2 has priority 5
+Thread-1 has priority 1
+ */

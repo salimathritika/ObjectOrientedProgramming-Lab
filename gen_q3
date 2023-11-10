@@ -1,0 +1,97 @@
+import java.util.Scanner;
+
+class Node<T> {
+    T data;
+    Node<T> next;
+
+    public Node(T data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+class LinkedList<T> {
+    private Node<T> head;
+
+    public LinkedList() {
+        this.head = null;
+    }
+
+    public void add(T data) {
+        Node<T> newNode = new Node<>(data);
+
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node<T> current = head;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+    }
+
+    public void display() {
+        Node<T> current = head;
+        while (current != null) {
+            System.out.print(current.data + " ");
+            current = current.next;
+        }
+        System.out.println();
+    }
+}
+
+public class gen_q3 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Using LinkedList with Integer objects
+        LinkedList<Integer> integerList = new LinkedList<>();
+
+        System.out.print("Enter the number of integers: ");
+        int numIntegers = scanner.nextInt();
+        System.out.println("Enter the integers:");
+
+        for (int i = 0; i < numIntegers; i++) {
+            System.out.print("Integer " + (i + 1) + ": ");
+            integerList.add(scanner.nextInt());
+        }
+
+        System.out.print("Integer List: ");
+        integerList.display();
+
+        // Using LinkedList with Double objects
+        LinkedList<Double> doubleList = new LinkedList<>();
+
+        System.out.print("\nEnter the number of doubles: ");
+        int numDoubles = scanner.nextInt();
+        System.out.println("Enter the doubles:");
+
+        for (int i = 0; i < numDoubles; i++) {
+            System.out.print("Double " + (i + 1) + ": ");
+            doubleList.add(scanner.nextDouble());
+        }
+
+        System.out.print("Double List: ");
+        doubleList.display();
+
+        scanner.close();
+    }
+}
+
+/*Enter the number of integers: 4
+Enter the integers:
+Integer 1: 14
+Integer 2: 36
+Integer 3: 78
+Integer 4: 35
+Integer List: 14 36 78 35
+
+Enter the number of doubles: 5
+Enter the doubles:
+Double 1: 23.87
+Double 2: 12.54
+Double 3: 5
+Double 4: 80.91
+Double 5: 6
+Double List: 23.87 12.54 5.0 80.91 6.0*/

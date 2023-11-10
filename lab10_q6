@@ -1,0 +1,37 @@
+import java.util.Scanner;
+
+class NegativeNumberException extends Exception {
+    public String toString()
+    {
+        return("Exception:Negative number");
+    }
+    }
+
+
+public class lab10_q6 {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        try {
+            // Get user input for a number
+            System.out.print("Enter a number: ");
+            double number = sc.nextDouble();
+
+            // Check if the number has a negative square root
+            double squareRoot = Math.sqrt(number);
+
+            if (Double.isNaN(squareRoot)) {
+                throw new NegativeNumberException();
+            }
+
+            System.out.println("Square root of " + number + " is: " + squareRoot);
+        } catch (NegativeNumberException e) {
+            System.out.println(e);
+        } catch (Exception e) {
+            System.out.println("Error: Invalid input. Please enter a valid number.");
+        } 
+    }
+}
+/*Enter a number: -4
+Exception:Negative number*/

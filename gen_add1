@@ -1,0 +1,57 @@
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class gen_add1 
+{
+    static <T> void display(T[] arr)
+    {
+        System.out.println("The array is:");
+        for(int i=0;i<arr.length;i++)
+        {
+            System.out.print(arr[i]+" ");
+        }
+    }
+
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        int n,i;
+        System.out.println("Enter size of the integer array:");
+        n=sc.nextInt();
+        Integer intarr[]=new Integer[n];
+        System.out.println("Enter the integers:");
+        for(i=0;i<n;i++)
+        {
+            intarr[i]=sc.nextInt();
+        }
+        display(intarr);
+
+        System.out.println("\nEnter size of the double array:");
+        n=sc.nextInt();
+        Double doubarr[]=new Double[n];
+        System.out.println("Enter the integers:");
+        for(i=0;i<n;i++)
+        {
+            doubarr[i]=sc.nextDouble();
+        }
+        display(doubarr);
+    }
+    
+}
+
+/*Enter size of the integer array:
+3
+Enter the integers:
+23
+34
+56
+The array is:
+23 34 56 Enter size of the double array:
+4
+Enter the integers:
+34.6
+42.
+78
+56
+The array is:
+34.6 42.0 78.0 56.0*/

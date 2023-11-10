@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class lab9_q2 {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get user input for the sentence
+        System.out.print("Enter a sentence: ");
+        String sentence = scanner.nextLine();
+
+        // Get user input for the word to replace
+        System.out.print("Enter the word to replace: ");
+        String wordToReplace = scanner.next();
+
+        // Get user input for the repeating characters
+        System.out.print("Enter the repeating characters: ");
+        String repeatingChars = scanner.next();
+
+        // Replace the word with repeating characters in the sentence
+        String modifiedSentence = replaceWordWithRepeatingChars(sentence, wordToReplace, repeatingChars);
+
+        // Display the modified sentence
+        System.out.println("\nModified Sentence: " + modifiedSentence);
+
+        scanner.close();
+    }
+
+    private static String replaceWordWithRepeatingChars(String sentence, String wordToReplace, String repeatingChars) {
+        // Use regular expression to replace all occurrences of the word with repeating characters
+        String replacedSentence = sentence.replaceAll("\\b" + wordToReplace + "\\b", repeatingChars);
+        return replacedSentence;
+    }
+}
+
+/*Enter a sentence: ritika is dum ritika is a second year
+Enter the word to replace: ritika
+Enter the repeating characters: nikita
+
+Modified Sentence: nikita is dum nikita is a second year*/

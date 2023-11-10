@@ -1,31 +1,50 @@
-//WORKS BUT PREFERABLY CHANGE
+public class lab11_q4 {
 
-public class lab11_q4 extends Thread
-{
-      public void run()
-      {
-            String threadName = Thread.currentThread().getName();
-            Integer threadPrio = Thread.currentThread().getPriority();
-            System.out.println(threadName + " has priority " + threadPrio);
-      }
-      public static void main(String[] args) throws InterruptedException
-      {
-            lab11_q4 t1 = new lab11_q4();
-            lab11_q4 t2 = new lab11_q4();
-            lab11_q4 t3 = new lab11_q4();
+    public static void main(String[] args) {
+        Thread thread1 = new Thread(new MyRunnable(), "Thread-1");
+        Thread thread2 = new Thread(new MyRunnable(), "Thread-2");
+        Thread thread3 = new Thread(new MyRunnable(), "Thread-3");
 
-            t1.setPriority(Thread.MAX_PRIORITY);
-            t2.setPriority(Thread.MIN_PRIORITY);
-            t3.setPriority(Thread.NORM_PRIORITY);
-  
-            t1.start();
-            t2.start();
-            t3.start();
-      }
+        thread1.setPriority(Thread.MAX_PRIORITY); // Priority 10
+        thread2.setPriority(Thread.MIN_PRIORITY); // Priority 1
+        thread3.setPriority(5); // Priority 5
+
+        thread1.start();
+        thread2.start();
+        thread3.start();
+    }
+
+    static class MyRunnable implements Runnable {
+        @Override
+        public void run() {
+            for (int i = 1; i <= 5; i++) {
+                System.out.println(Thread.currentThread().getName() + " - Count: " + i);
+
+                try {
+                    // Simulate some work
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    // Handle InterruptedException if the thread is interrupted during sleep
+                    System.out.println(Thread.currentThread().getName() + " is interrupted. Exiting.");
+                    return;
+                }
+            }
+        }
+    }
 }
 
-/*OUTPUT
- * Thread-0 has priority 10
-Thread-2 has priority 5
-Thread-1 has priority 1
- */
+/*Thread-3 - Count: 1
+Thread-2 - Count: 1
+Thread-1 - Count: 1
+Thread-3 - Count: 2
+Thread-1 - Count: 2
+Thread-2 - Count: 2
+Thread-3 - Count: 3
+Thread-1 - Count: 3
+Thread-2 - Count: 3
+Thread-3 - Count: 4
+Thread-1 - Count: 4
+Thread-2 - Count: 4
+Thread-3 - Count: 5
+Thread-1 - Count: 5
+Thread-2 - Count: 5*/

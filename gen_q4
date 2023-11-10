@@ -1,0 +1,94 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+class wildcard {
+    public static void processData(List<?> dataList) {
+        for (Object data : dataList) {
+            System.out.println(data);
+        }
+    }
+}
+
+public class gen_q4 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // List of integers
+        List<Integer> integerList = new ArrayList<>();
+        System.out.print("Enter the number of integers: ");
+        int numIntegers = scanner.nextInt();
+        System.out.println("Enter the integers:");
+
+        for (int i = 0; i < numIntegers; i++) {
+            System.out.print("Integer " + (i + 1) + ": ");
+            integerList.add(scanner.nextInt());
+        }
+
+        // List of doubles
+        List<Double> doubleList = new ArrayList<>();
+        System.out.print("Enter the number of doubles: ");
+        int numDoubles = scanner.nextInt();
+        System.out.println("Enter the doubles:");
+
+        for (int i = 0; i < numDoubles; i++) {
+            System.out.print("Double " + (i + 1) + ": ");
+            doubleList.add(scanner.nextDouble());
+        }
+
+        // List of strings
+        List<String> stringList = new ArrayList<>();
+        System.out.print("Enter the number of strings: ");
+        int numStrings = scanner.nextInt();
+        System.out.println("Enter the strings:");
+
+        for (int i = 0; i < numStrings; i++) {
+            System.out.print("String " + (i + 1) + ": ");
+            stringList.add(scanner.next());
+        }
+
+        // Process and display the data using wildcard arguments
+        System.out.println("\nProcessing and displaying integers:");
+        wildcard.processData(integerList);
+
+        System.out.println("\nProcessing and displaying doubles:");
+        wildcard.processData(doubleList);
+
+        System.out.println("\nProcessing and displaying strings:");
+        wildcard.processData(stringList);
+
+        scanner.close();
+    }
+}
+
+
+/*Enter the number of integers: 3
+Enter the integers:
+Integer 1: 12
+Integer 2: 23
+Integer 3: 34
+Enter the number of doubles: 3
+Enter the doubles:
+Double 1: 23.6
+Double 2: 34
+Double 3: 45
+Enter the number of strings: 3
+Enter the strings:
+String 1: ritz
+String 2: nik
+String 3: ap
+
+Processing and displaying integers:
+12
+23
+34
+
+Processing and displaying doubles:
+23.6
+34.0
+45.0
+
+Processing and displaying strings:
+ritz
+nik
+ap*/

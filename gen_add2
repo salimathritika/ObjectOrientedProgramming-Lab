@@ -1,0 +1,62 @@
+import java.util.Scanner;
+
+public class gen_add2 {
+
+    public static <T extends Comparable<T>> T findLargest(T obj1, T obj2, T obj3) {
+        T largest = obj1;
+
+        if (obj2.compareTo(largest) > 0) {
+            largest = obj2;
+        }
+
+        if (obj3.compareTo(largest) > 0) {
+            largest = obj3;
+        }
+
+        return largest;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Getting user input for three integers
+        System.out.print("Enter the first integer: ");
+        Integer int1 = scanner.nextInt();
+
+        System.out.print("Enter the second integer: ");
+        Integer int2 = scanner.nextInt();
+
+        System.out.print("Enter the third integer: ");
+        Integer int3 = scanner.nextInt();
+
+        // Finding and displaying the largest integer
+        Integer largestInt = findLargest(int1, int2, int3);
+        System.out.println("The largest integer is: " + largestInt);
+
+        // Getting user input for three doubles
+        System.out.print("\nEnter the first double: ");
+        Double double1 = scanner.nextDouble();
+
+        System.out.print("Enter the second double: ");
+        Double double2 = scanner.nextDouble();
+
+        System.out.print("Enter the third double: ");
+        Double double3 = scanner.nextDouble();
+
+        // Finding and displaying the largest double
+        Double largestDouble = findLargest(double1, double2, double3);
+        System.out.println("The largest double is: " + largestDouble);
+
+        scanner.close();
+    }
+}
+
+/*Enter the first integer: 5
+Enter the second integer: 76
+Enter the third integer: 1
+The largest integer is: 76
+
+Enter the first double: 56.67
+Enter the second double: 56.65
+Enter the third double: 56.64
+The largest double is: 56.67*/

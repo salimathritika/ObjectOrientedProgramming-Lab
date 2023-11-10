@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+class validate extends Exception
+{
+    public String toString()
+    {
+        return("Exception:The matrix is not a square matrix");
+    }
+
+}
+
+public class lab10_q5 
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        int m,n;
+        try
+        {
+            System.out.println("Enter the order of the matrix:");
+            m=sc.nextInt();
+            n=sc.nextInt();
+            if(m!=n)
+              throw new validate();
+            System.out.println("The matrix is a square matrix");
+        }
+        catch(validate e)
+        {
+            System.out.println(e);
+        }
+        
+    }
+        
+}
+
+/*Enter the order of the matrix:
+2
+4
+Exception:The matrix is not a square matrix*/

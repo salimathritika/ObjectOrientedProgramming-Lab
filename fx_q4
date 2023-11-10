@@ -1,0 +1,61 @@
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+
+import java.math.BigInteger;
+
+public class fx_q4 extends Application {
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) {
+        primaryStage.setTitle("GCD Calculator");
+
+        TextField number1TextField = new TextField();
+        TextField number2TextField = new TextField();
+        Button calculateButton = new Button("Calculate GCD");
+        Label resultLabel = new Label();
+
+        calculateButton.setOnAction(event -> {
+            try {
+                BigInteger number1 = new BigInteger(number1TextField.getText());
+                BigInteger number2 = new BigInteger(number2TextField.getText());
+
+                
+                BigInteger gcd = number1.gcd(number2);
+
+                
+                resultLabel.setText("Numbers: " + number1 + " and " + number2 + "\nGCD: " + gcd);
+            } catch (NumberFormatException e) {
+                resultLabel.setText("Please enter valid positive integers.");
+            }
+        });
+
+        
+        GridPane gridPane = new GridPane();
+        gridPane.setPadding(new Insets(20, 20, 20, 20));
+        gridPane.setHgap(10);
+        gridPane.setVgap(10);
+
+        gridPane.add(new Label("Number 1:"), 0, 0);
+        gridPane.add(number1TextField, 1, 0);
+        gridPane.add(new Label("Number 2:"), 0, 1);
+        gridPane.add(number2TextField, 1, 1);
+        gridPane.add(calculateButton, 1, 2);
+        gridPane.add(resultLabel, 0, 3, 2, 1);
+
+        
+        Scene scene = new Scene(gridPane, 300, 200);
+
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+}

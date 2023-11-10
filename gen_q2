@@ -1,0 +1,112 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
+
+class GenericStack<T> {
+    List<T> stack;
+
+    public GenericStack() {
+        stack = new ArrayList<>();
+    }
+
+    public void push(T item) {
+        stack.add(item);
+    }
+
+    public T pop() {
+        if (isEmpty()) {
+            throw new IllegalStateException("Stack is empty");
+        }
+        return stack.remove(stack.size() - 1);
+    }
+
+    public boolean isEmpty() {
+        return stack.isEmpty();
+    }
+}
+
+class Student {
+    private String name;
+
+    public Student(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Student: " + name;
+    }
+}
+
+class Employee {
+    private String name;
+
+    public Employee(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee: " + name;
+    }
+}
+
+public class java_cmd {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        GenericStack<Student> studentStack = new GenericStack<>();
+
+        System.out.print("Enter the number of students: ");
+        int numStudents = scanner.nextInt();
+
+        for (int i = 0; i < numStudents; i++) {
+            System.out.print("Enter the name of student " + (i + 1) + ": ");
+            String studentName = scanner.next();
+            studentStack.push(new Student(studentName));
+        }
+
+        System.out.println("\nStudents popped from the stack:");
+        while (!studentStack.isEmpty()) {
+            System.out.println(studentStack.pop());
+        }
+
+        GenericStack<Employee> employeeStack = new GenericStack<>();
+
+        System.out.print("\nEnter the number of employees: ");
+        int numEmployees = scanner.nextInt();
+
+        for (int i = 0; i < numEmployees; i++) {
+            System.out.print("Enter the name of employee " + (i + 1) + ": ");
+            String employeeName = scanner.next();
+            employeeStack.push(new Employee(employeeName));
+        }
+
+        System.out.println("\nEmployees popped from the stack:");
+        while (!employeeStack.isEmpty()) {
+            System.out.println(employeeStack.pop());
+        }
+
+        scanner.close();
+    }
+}
+
+/*Enter the number of students: 3
+Enter the name of student 1: ritz
+Enter the name of student 2: niku
+Enter the name of student 3: anna
+
+Students popped from the stack:
+Student: anna
+Student: niku
+Student: ritz
+
+Enter the number of employees: 3
+Enter the name of employee 1: aparna
+Enter the name of employee 2: nandu
+Enter the name of employee 3: adi
+
+Employees popped from the stack:
+Employee: adi
+Employee: nandu
+Employee: aparna*/

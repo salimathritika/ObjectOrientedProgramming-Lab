@@ -30,7 +30,7 @@ public class fx_q3 extends Application {
             String username = usernameTextField.getText();
             String password = passwordField.getText();
 
-            if ("user".equals(username) && "password".equals(password)) {
+            if ("password".equals(password)) {
                 welcomeMessage.setText("Welcome " + username);
             } else {
                 welcomeMessage.setText("Invalid username or password");

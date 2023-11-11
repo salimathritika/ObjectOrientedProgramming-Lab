@@ -38,7 +38,6 @@ public class fx_q3 extends Application {
         });
 
         GridPane gridPane = new GridPane();
-        gridPane.setPadding(new Insets(20, 20, 20, 20));
         gridPane.setHgap(10);
         gridPane.setVgap(10);
 

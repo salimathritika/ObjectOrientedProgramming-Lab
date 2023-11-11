@@ -31,7 +31,6 @@ public class fx_q2 extends Application {
         });
 
         FlowPane root = new FlowPane();
-        root.setPadding(new Insets(10, 10, 10, 10));
         root.setVgap(10);
         root.setHgap(10);
         root.getChildren().addAll(promptLabel, numberTextField, showTableButton, resultLabel);

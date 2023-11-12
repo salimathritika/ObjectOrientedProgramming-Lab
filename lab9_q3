@@ -13,32 +13,27 @@ public class lab9_q3
         }
         return rev;
     }
-    static String order(String st) //not working
-    {
-        int i,j,n;
-        n=st.length();
-        char temp;
-        char a[]=new char[n];
-        a=st.toCharArray();
-        for(i=0;i<n-1;i++)
-        {
-            for(j=i+1;j<n;j++)
-            {
-                if(st.charAt(i)>st.charAt(i))
-                  {
-                      
-                      if(a[i]>a[j]) 
-                      {
-                        temp = a[i];
-                        a[i] = a[j];
-                        a[j] = temp;
-                     }
-                  }
+    
+    static String order(String st) 
+{
+    int i, j, n;
+    n = st.length();
+    char temp;
+    char a[] = new char[n];
+    a = st.toCharArray();
+    for (i = 0; i < n - 1; i++) {
+        for (j = i + 1; j < n; j++) {
+            if (a[i] > a[j]) {  
+                temp = a[i];
+                a[i] = a[j];
+                a[j] = temp;
             }
         }
-        st=a.toString();
-        return st;
     }
+    st = new String(a);  
+    return st;
+}
+
     public static void main(String args[])
     {
         Scanner sc=new Scanner(System.in);

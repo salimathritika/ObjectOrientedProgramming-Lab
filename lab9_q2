@@ -28,7 +28,7 @@ public class lab9_q2 {
 
     private static String replaceWordWithRepeatingChars(String sentence, String wordToReplace, String repeatingChars) {
         // Use regular expression to replace all occurrences of the word with repeating characters
-        String replacedSentence = sentence.replaceAll("\\b" + wordToReplace + "\\b", repeatingChars);
+        String replacedSentence = sentence.replaceAll( wordToReplace , repeatingChars);
         return replacedSentence;
     }
 }
